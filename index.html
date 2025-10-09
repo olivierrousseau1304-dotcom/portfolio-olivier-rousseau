@@ -274,7 +274,7 @@
     input.classList.remove('is-invalid');
   }
   function showAlert(type, msg) {
-    alertBox.className = 'alert mt-3 alert-' + type; // success | danger | warning
+    alertBox.className = 'alert mt-3 alert-' + type;
     alertBox.textContent = msg;
   }
   function hideAlert() {
@@ -282,7 +282,7 @@
     alertBox.textContent = '';
   }
 
-  // Validation live : enlève l'état invalide dès que l'utilisateur retape
+  // Validation dynamique
   ['name','email','phone','message'].forEach(id => {
     $(id).addEventListener('input', () => clearInvalid($(id)));
   });
@@ -298,35 +298,38 @@
 
     let valid = true;
 
-    // Nom & message obligatoires
+    // Champs obligatoires
     if (!name) { setInvalid($('name'), 'Merci de renseigner votre nom.'); valid = false; }
     if (!message) { setInvalid($('message'), 'Merci d’écrire un message.'); valid = false; }
 
-    // Au moins un moyen de contact
+    // Un moyen de contact requis
     if (!email && !phone) {
       setInvalid($('email'), 'Indiquez un e-mail ou un téléphone.');
       setInvalid($('phone'), 'Indiquez un e-mail ou un téléphone.');
       valid = false;
     }
 
-    // Formats si fournis
+    // Formats
     if (!emailOk(email))  { setInvalid($('email'), 'Adresse e-mail invalide.'); valid = false; }
     if (!phoneOk(phone))  { setInvalid($('phone'), 'Numéro de téléphone invalide.'); valid = false; }
 
     if (!valid) return;
 
-    // Envoi vers Google Apps Script
+    // Envoi vers ton script Google Apps Script
     submitBtn.disabled = true;
     submitBtn.textContent = 'Envoi…';
 
     try {
-      const res = await fetch('https://script.google.com/macros/s/AKfycbzH0OSlUs9zY5gfe8W5Ztn3EESZBntWMs8-xtMwK1Mg_jypyqz0IefolwsUjNvP2bar/exec', {
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzH0OSlUs9zY5gfe8W5Ztn3EESZBntWMs8-xtMwK1Mg_jypyqz0IefolwsUjNvP2bar/exec';
+
+      const res = await fetch(SCRIPT_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, phone, message })
       });
 
       const data = await res.json().catch(() => ({}));
+
       if (res.ok && data && data.success) {
         showAlert('success', '✅ Message envoyé avec succès !');
         form.reset();
@@ -343,3 +346,4 @@
   });
 })();
 </script>
+
