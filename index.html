@@ -320,7 +320,8 @@
     submitBtn.textContent = 'Envoi…';
 
     try {
-      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzH0OSlUs9zY5gfe8W5Ztn3EESZBntWMs8-xtMwK1Mg_jypyqz0IefolwsUjNvP2bar/exec';
+     const SCRIPT_URL = 'https://corsproxy.io/?https://script.google.com/macros/s/AKfycbzH0OSlUs9zY5gfe8W5Ztn3EESZBntWMs8-xtMwK1Mg_jypyqz0IefolwsUjNvP2bar/exec';
+
 
       const res = await fetch(SCRIPT_URL, {
         method: 'POST',
