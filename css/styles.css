@@ -11071,3 +11071,49 @@ a:focus {
 .border-primary {
   border-color: #31767B !important;
 }
+
+/* Styles pour la section CV */
+#cv {
+  background: linear-gradient(135deg, #31767B 0%, #285E63 100%) !important;
+}
+
+.cv-preview img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cv-preview img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3) !important;
+}
+
+.cv-actions .btn {
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.cv-actions .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.cv-actions .btn-outline-light:hover {
+  background-color: rgba(255,255,255,0.1);
+  border-color: #fff;
+}
+
+@media (max-width: 992px) {
+  .cv-preview img {
+    max-height: 400px !important;
+  }
+}
+
+/* Style personnalisé pour le nom dans la navbar */
+.custom-brand {
+  margin-left: -200px !important;
+}
+
+@media (max-width: 768px) {
+  .custom-brand {
+    margin-left: -100px !important;
+  }
+}
