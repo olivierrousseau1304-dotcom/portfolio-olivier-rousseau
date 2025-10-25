@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
         
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+        
         
         <link href="css/styles.css" rel="stylesheet" />
 
@@ -117,6 +117,61 @@
             #contact label { color: rgba(255,255,255,0.9); }
             #contact .form-control::placeholder { color: rgba(0,0,0,0.55); }
         </style>
+        <style>
+            /* Correction: rendre visible le texte saisi dans les champs Contact */
+            #contact .form-control { color: #212529; background-color: #ffffff; }
+            #contact .form-control::placeholder { color: rgba(0,0,0,0.55); }
+            #contact .form-floating > label { color: rgba(33,37,41,0.8) !important; }/* Lightbox: légende visible et cliquable */
+            .slbCaption, .slbCaptionText {
+                color: #ffffff !important;
+                text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+                font-size: 1rem;
+            }
+            
+            /* Navbar brand GitHub: propre, centré et réactif */
+            #mainNav .navbar-brand.brand-github {
+                display: inline-flex;
+                flex-direction: column;
+                align-items: center;
+                gap: .2rem;
+                position: relative;
+                line-height: 1;
+                text-decoration: none;
+            }
+            #mainNav .navbar-brand.brand-github .bi-github {
+                font-size: 3.2rem; /* ~2x plus gros */
+                color: currentColor;
+                text-shadow: 0 0 10px rgba(49,118,123,0.55), 0 3px 10px rgba(0,0,0,0.4);
+            }
+            #mainNav .navbar-brand.brand-github .brand-arrow {
+                display: block;
+                line-height: 0;
+                opacity: .95;
+                animation: brandArrowPulse 1.8s ease-in-out infinite;
+                pointer-events: none;
+                color: currentColor;
+            }
+            #mainNav .navbar-brand.brand-github .brand-caption {
+                font-size: .72rem;
+                letter-spacing: .02em;
+                opacity: .95;
+                color: currentColor;
+                margin-top: .05rem;
+            }
+            @keyframes brandArrowPulse {
+                0%, 100% { opacity: .4; filter: drop-shadow(0 0 4px rgba(0,200,255,.25)); }
+                50% { opacity: 1; filter: drop-shadow(0 0 8px rgba(0,200,255,.5)); }
+            }
+            /* Hover état (desktop) */
+            #mainNav .navbar-brand.brand-github:hover { color: #00d1ff !important; }
+            /* Ajustements responsive: limiter la taille sur très petits écrans */
+            @media (max-width: 575.98px) {
+                #mainNav .navbar-brand.brand-github { gap: .18rem; }
+                #mainNav .navbar-brand.brand-github .bi-github { font-size: 2.8rem; }
+                #mainNav .navbar-brand.brand-github .brand-caption { font-size: .66rem; }
+            }
+        </style>
+        
     </head>
     <body id="page-top">
         <!-- Animated tech/network background canvas -->
@@ -124,7 +179,19 @@
         
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand custom-brand" href="#page-top">Olivier ROUSSEAU</a>
+                <a class="navbar-brand brand-github" href="https://github.com/olivierrousseau1304-dotcom?tab=repositories" target="_blank" rel="noopener" aria-label="Mon GitHub">
+                    <i class="bi bi-github" aria-hidden="true"></i>
+                    <span class="brand-arrow" aria-hidden="true">
+                        <svg width="42" height="28" viewBox="0 0 42 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Courbe partant du bas vers le haut (vers le logo) -->
+                            <path d="M21 26 C 10 22, 10 14, 21 8" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <!-- Pointe de flèche vers le haut -->
+                            <path d="M21 6 L17.8 11" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M21 6 L24.2 11" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </span>
+                    <span class="brand-caption">mon github</span>
+                </a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
@@ -208,38 +275,38 @@
             <div class="container-fluid p-0">
                 <div class="row g-0">
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/portfolio/fullsize/1.jpg" title="Project Name">
+                        <a class="portfolio-box" href="https://projets-decole-dingenieur.gitbook.io/projet-coffre-fort/" title="Projet Strongbox" target="_blank" rel="noopener">
                             <img class="img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="..." />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Projet 1</div>
+                                <div class="project-name">Projet Strongbox</div>
                             </div>
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/portfolio/fullsize/2.jpg" title="Project Name">
+                        <a class="portfolio-box" href="https://corentin-cartallier.gitbook.io/projet-clear-data" title="Projet ClearData" target="_blank" rel="noopener">
                             <img class="img-fluid" src="assets/img/portfolio/thumbnails/2.jpg" alt="..." />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Projet 2</div>
+                                <div class="project-name">Projet ClearData</div>
                             </div>
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/portfolio/fullsize/3.jpg" title="Project Name">
+                        <a class="portfolio-box" href="https://corentin-cartallier.gitbook.io/projet-traitement-de-signal/" title="Projet Agent et Signal" target="_blank" rel="noopener">
                             <img class="img-fluid" src="assets/img/portfolio/thumbnails/3.jpg" alt="..." />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Projet 3</div>
+                                <div class="project-name">Projet Agent et Signal</div>
                             </div>
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/portfolio/fullsize/4.jpg" title="Project Name">
+                        <a class="portfolio-box" href="https://projets-decole-dingenieur.gitbook.io/projet-python-meca/" title="Projet Fast and Furious" target="_blank" rel="noopener">
                             <img class="img-fluid" src="assets/img/portfolio/thumbnails/4.jpg" alt="..." />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Projet 4</div>
+                                <div class="project-name">Projet Fast and Furious</div>
                             </div>
                         </a>
                     </div>
@@ -501,104 +568,8 @@
         </script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
-        
         <script src="js/scripts.js"></script>
-        
     </body>
 </html>
-<script>
-(() => {
-  const form = document.getElementById('contactForm');
-  const alertBox = document.getElementById('formAlert');
-  const submitBtn = document.getElementById('submitBtn');
-
-  const $ = (id) => document.getElementById(id);
-
-  const emailOk = (v) => !v || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(v);
-  const phoneOk = (v) => !v || /^[0-9+\s().-]{6,}$/.test(v);
-
-  function setInvalid(input, msg) {
-    input.classList.add('is-invalid');
-    const fb = input.parentElement.querySelector('.invalid-feedback');
-    if (fb && msg) fb.textContent = msg;
-  }
-  function clearInvalid(input) {
-    input.classList.remove('is-invalid');
-  }
-  function showAlert(type, msg) {
-    alertBox.className = 'alert mt-3 alert-' + type;
-    alertBox.textContent = msg;
-  }
-  function hideAlert() {
-    alertBox.className = 'alert d-none mt-3';
-    alertBox.textContent = '';
-  }
-
-  // Validation dynamique
-  ['name','email','phone','message'].forEach(id => {
-    $(id).addEventListener('input', () => clearInvalid($(id)));
-  });
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    hideAlert();
-
-    const name = $('name').value.trim();
-    const email = $('email').value.trim();
-    const phone = $('phone').value.trim();
-    const message = $('message').value.trim();
-
-    let valid = true;
-
-    // Champs obligatoires
-    if (!name) { setInvalid($('name'), 'Merci de renseigner votre nom.'); valid = false; }
-    if (!message) { setInvalid($('message'), 'Merci d’écrire un message.'); valid = false; }
-
-    // Un moyen de contact requis
-    if (!email && !phone) {
-      setInvalid($('email'), 'Indiquez un e-mail ou un téléphone.');
-      setInvalid($('phone'), 'Indiquez un e-mail ou un téléphone.');
-      valid = false;
-    }
-
-    // Formats
-    if (!emailOk(email))  { setInvalid($('email'), 'Adresse e-mail invalide.'); valid = false; }
-    if (!phoneOk(phone))  { setInvalid($('phone'), 'Numéro de téléphone invalide.'); valid = false; }
-
-    if (!valid) return;
-
-    // Envoi vers ton script Google Apps Script
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Envoi…';
-
-    try {
-     const SCRIPT_URL = 'https://oliv-sheet-cors-on-silent-limit-e69a.olivier-rousseau1304.workers.dev/';
 
 
-
-      const res = await fetch(SCRIPT_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, phone, message })
-      });
-
-      const data = await res.json().catch(() => ({}));
-
-      if (res.ok && data && data.success) {
-        showAlert('success', '✅ Message envoyé avec succès !');
-        form.reset();
-      } else {
-        showAlert('danger', '❌ Une erreur est survenue. Réessayez plus tard.');
-      }
-    } catch (err) {
-      console.error(err);
-      showAlert('danger', '❌ Impossible de contacter le serveur. Réessayez plus tard.');
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Envoyer';
-    }
-  });
-})();
-</script>
