@@ -399,14 +399,20 @@
 
   <!-- Email (optionnel) -->
   <div class="form-floating mb-3">
-    <input class="form-control" id="email" type="email" placeholder="Adresse e-mail (optionnelle)" />
+    <input class="form-control" id="email" type="email" inputmode="email" autocomplete="email"
+           placeholder="Adresse e-mail (optionnelle)"
+           pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$"
+           title="Adresse e-mail au format nom@domaine.tld" />
     <label for="email">Adresse e-mail (optionnelle)</label>
     <div class="invalid-feedback">Adresse e-mail invalide.</div>
   </div>
 
   <!-- Téléphone (optionnel) -->
   <div class="form-floating mb-3">
-    <input class="form-control" id="phone" type="tel" placeholder="Numéro de téléphone (optionnel)" />
+    <input class="form-control" id="phone" type="tel" inputmode="tel" autocomplete="tel"
+           placeholder="Numéro de téléphone (optionnel)"
+           pattern="^(?:\+?[1-9]\d{6,14}|(?:\+33|0)[1-9](?:[ .-]?\d{2}){4})$"
+           title="Numéro international (+…) ou français valide (ex. 06 12 34 56 78)" />
     <label for="phone">Numéro de téléphone (optionnel)</label>
     <div class="invalid-feedback">Numéro de téléphone invalide.</div>
   </div>
@@ -611,13 +617,14 @@
                 function isEmailValid(v) {
                     if (!v) return true; // optionnel
                     // Regex simple et robuste (RFC-lite)
-                    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
+                    return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(v.trim());
                 }
 
                 function isPhoneValid(v) {
                     if (!v) return true; // optionnel
                     // Autorise chiffres, espaces, tirets, points, parenthèses, préfixe+
-                    return /^\+?[0-9 .()\-]{6,}$/.test(v.trim());
+                    const p = v.trim();
+                    return /^(?:\+?[1-9]\d{6,14}|(?:\+33|0)[1-9](?:[ .-]?\d{2}){4})$/.test(p);
                 }
 
                 function validate() {
