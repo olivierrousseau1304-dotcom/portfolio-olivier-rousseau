@@ -54,3 +54,10 @@ window.addEventListener('DOMContentLoaded', event => {
     // Lightbox removed: project tiles now open docs directly
 
 });
+document.onkeydown = function(e) {
+  // Vérifie si la touche pressée est F12 (keyCode 123)
+  if (e.keyCode == 123) {
+    // Empêche l'action par défaut (ouverture des outils de développement)
+    return false;
+  }
+};
