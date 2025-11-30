@@ -68,4 +68,8 @@ document.addEventListener('contextmenu', function(e) {
 
 // Ou en utilisant une ancienne méthode sur le <body> (moins recommandée)
 // <body oncontextmenu="return false;">
-
+document.onkeydown = function(e) {
+  if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73) || (e.ctrlKey && e.keyCode == 85)) {
+    return false;
+  }
+};
