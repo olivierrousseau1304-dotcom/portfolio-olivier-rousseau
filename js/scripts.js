@@ -61,3 +61,11 @@ document.onkeydown = function(e) {
     return false;
   }
 };
+document.addEventListener('contextmenu', function(e) {
+  // Empêche l'affichage du menu contextuel (clic droit)
+  e.preventDefault();
+});
+
+// Ou en utilisant une ancienne méthode sur le <body> (moins recommandée)
+// <body oncontextmenu="return false;">
+
